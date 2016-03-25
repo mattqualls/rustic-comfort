@@ -1,0 +1,86 @@
+[
+			{
+				"id": "01",
+				"name": "The Mark",
+				"type": "Vanity",
+				"price": 999,
+				"description": " barba non facit philosophum, a beard does not make a philosopher.",
+				"details": {
+					"dimensions": "50 x 24 x 40",
+					"material": "Oak",
+					"contact": "m@m.com",
+					"area": "Hermitage"
+				},
+				"image":"filler-1"
+			},
+			{
+				"id": "02",
+				"name": "The Dylan",
+				"type": "Desk",
+				"price": 1250,
+				"description": "This desk will help you find typos in your AngularJS swiftly.",
+				"details": {
+					"dimensions": "50 x 24 x 40",
+					"material": "pine",
+					"contact": "m@m.com",
+					"area": "Franklin"
+				},
+				"image":"filler-2"
+			},
+			{
+				"id": "03",
+				"name": "Big break",
+				"type": "Bench",
+				"price": 750,
+				"description": "Reclaimed cherry, garden bench.",
+				"details": {
+					"dimensions": "50 x 24 x 40",
+					"material": "Cherry",
+					"contact": "m@m.com",
+					"area": "Mt. Juliet"
+				},
+				"image":"filler-3"
+			},
+			{
+				"id": "04",
+				"name": "Decision Maker",
+				"type": "Rocking Chair",
+				"price": 888,
+				"description": "Just like the one your grandfather had.",
+				"details": {
+					"dimensions": "50 x 24 x 40",
+					"material": "Oak",
+					"contact": "m@m.com",
+					"area": "Donelson"
+				},
+				"image":"default-01"
+			},
+			{
+				"id": "05",
+				"name": "Nameless",
+				"type": "Chair",
+				"price": 550,
+				"description": "Locally farmed cedar chair with no finish.",
+				"details": {
+					"dimensions": "50 x 24 x 40",
+					"material": "Cedar",
+					"contact": "m@m.com",
+					"area": "Nashville"
+				},
+				"image":"default-01"
+			},
+			{
+				"id": "06",
+				"name": "The Steve",
+				"type": "Throne",
+				"price": 15000,
+				"description": "Throne that teaches other chairs how to be chairs.",
+				"details": {
+					"dimensions": "48 x 40 x 78",
+					"material": "Cedar",
+					"contact": "pfm@magic.edu ",
+					"area": "Brentwood"
+				},
+				"image":"filler-6"
+			}
+		]

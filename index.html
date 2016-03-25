@@ -8,7 +8,8 @@
   <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 
-<body ng-app="RusticApp">
+<body ng-app="furnitureApp" ng-controller="productController">
+<!-- Navigation bar -->
   <header>
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
@@ -22,21 +23,208 @@
           <li><a href="#">About</a></li> 
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Register</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
       </div>
     </nav>
-    </header>
-
-    <div class="container">
-      
-      <div ng-view>
-        
-<!--   <nav ng-include="'partials/movie-nav.html'"></nav> -->
+  </header>
+<!-- Custom AngularJs filter html for price search-->
+<div class="container"> 
+  <div class="col-sm-12 price-form">
+    <div class="row price-form-row" ng-if="!addListing">
+    <div class="col-sm-6">
+      <div class="input-group">
+        <span class="input-group-addon">Min Price</span>
+        <select name="minPrice" id="minPrice" ng-model="priceInfo.min" class="form-control">
+          <option value="0">$0</option>
+          <option value="100">$100</option>
+          <option value="250">$250</option>
+          <option value="500">$500</option>
+          <option value="750">$750</option>
+          <option value="1000">$1,000</option>
+          <option value="2000">$2,000</option>
+          <option value="5000">$5,000</option>
+          <option value="10000">$10,000</option>
+          <option value="15000">$15,000</option>
+          <option value="25000">$25,000</option>
+        </select>
       </div>
+    </div>
+  
 
+  <div class="col-sm-6">
+      <div class="input-group">
+        <span class="input-group-addon">Max Price</span>
+        <select name="maxPrice" id="maxPrice" ng-model="priceInfo.max" class="form-control">
+          <option value="0">$0</option>
+          <option value="100">$100</option>
+          <option value="250">$250</option>
+          <option value="500">$500</option>
+          <option value="750">$750</option>
+          <option value="1000">$1,000</option>
+          <option value="2000">$2,000</option>
+          <option value="5000">$5,000</option>
+          <option value="10000">$10,000</option>
+          <option value="15000">$15,000</option>
+          <option value="25000">$25,000</option>
+        </select>
+      </div>
+    </div>
+    </div>
+    <!-- add product listing buttons inside the container for price search -->
+    <button class="btn btn-primary" 
+      ng-click="addListing = !addListing"
+      ng-show="!addListing">Add Product Listing
+    </button>
 
+    <button class="btn btn-danger"
+      ng-click="addListing = !addListing"
+      ng-show="addListing">Close
+    </button>
+<!-- beginning of listing form for adding -->
+      <div class="listing-form" ng-if="addListing">
+        
+        <h3>Add a Listing</h3>
+
+        <div class="row listing-form-row">
+          <div class="col-sm-4">
+            <div class="input-group">
+              <span class="input-group-addon">Name</span>
+              <input type="text" placeholder="Give your listing a glorious name" class="form-control" ng-model="newListing.name">
+            </div>
+          </div>
+        
+
+          <div class="col-sm-4">
+            <div class="input-group">
+              <span class="input-group-addon">Price</span>
+              <input type="text" placeholder="Enter the price" class="form-control" ng-model="newListing.price">
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="input-group">
+              <span class="input-group-addon">Type</span>
+              <select type="select" name="furnitureType"
+              id="furnitureType" class="form-control" ng-model="newListing.type">
+                <option value="Desk">Desk</option>
+                <option value="Vanity">Vanity</option>
+                <option value="Chair">Chair</option>
+                <option value="Table">Table</option>
+                <option value="Stool">Stool</option>
+                <option value="Rocking chair">Rocking chair</option>
+                <option value="Dresser"></option>
+                <option value="Other">Other</option>
+                </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row listing-form-row">
+              <div class="col-sm-4">
+                <div class="input-group">
+                  <span class="input-group-addon">Description</span>
+                  <textarea 
+                    type="text" 
+                    placeholder="Enter the description" 
+                    class="form-control" 
+                    ng-model="newListing.description">
+                  </textarea>
+                </div>
+              </div>
+
+              <div class="col-sm-8">
+
+                <div class="col-sm-4">
+                  <div class="input-group">
+                    <span class="input-group-addon">Dims</span>
+                    <input 
+                      type="text" 
+                      placeholder="Dimensions" 
+                      class="form-control" 
+                      ng-model="newListing.details.dimenstions">
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <div class="input-group">
+                    <span class="input-group-addon">City</span>
+                    <input 
+                      type="text" 
+                      placeholder="Area" 
+                      class="form-control" 
+                      ng-model="newListing.details.area">
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <div class="input-group">
+                    <span class="input-group-addon">Contact</span>
+                    <input 
+                      type="text" 
+                      placeholder="Contact" 
+                      class="form-control" 
+                      ng-model="newListing.details.contact">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+                <button class="btn btn-primary listing-button"
+                  ng-click="addProduct(newListing)"
+                  ng-show="addListing">Add
+                </button>
+            <pre>{{newListing | json}}</pre>
+
+<!-- end for listing form for adding  -->
+      </div>
+    
+  </div>
+</div>   
+
+<!-- Initial product listings -->
+    <div class="container">
+      <div class="col-sm-4" ng-repeat="product in products | priceFilter:priceInfo | orderBy: '-id'">
+        <div class="thumbnail">
+          <img ng-src="images/{{product.image}}.jpg" alt="">
+          <div class="caption">
+            <div ng-hide="showDetails === true">
+              <h3><i class="glyphicon glyphicon-tag"></i> {{product.price | currency}}</h3>
+              <h4> {{product.name}}
+                <span class="label label-primary label-sm"> {{product.type}}</span>
+              </h4>
+
+            </div>
+            <!-- show details button -->
+            <button class="btn btn-xs btn-success"
+                    ng-hide="showDetails === true"
+                    ng-click="showDetails = !showDetails">
+                    <i class="glyphicon glyphicon-info-sign"></i>
+                    Details
+            </button>
+            <!-- close details -->
+            <button class="btn btn-xs btn-danger"
+                    ng-show="showDetails === true"
+                    ng-click="showDetails = !showDetails">
+                    Close
+            </button>
+            <!-- contents of show details button -->
+            <div class="details" ng-show="showDetails === true">
+              <h4>
+                <span class="label label-info">Dims: {{product.details.dimensions}}</span>
+                <span class="label label-info">Materials: {{product.details.material}}</span>
+                <span class="label label-info">Area: {{product.details.area}}</span>
+                <span class="label label-info">Contact: {{product.details.contact}}</span>
+              </h4>
+              <p>{{product.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- view tab to be used when contents are moved into individual partials -->
+          <div ng-view></div>
 
 <!-- Dependencies -->
   <script src="lib/bower_components/angular/angular.min.js"></script>
@@ -47,6 +235,9 @@
   <script src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
   <script src="app/app.js"></script>
+  <script src="app/controllers/productctrl.js"></script>
+  <script src="app/factories/prodfactory.js"></script>
+  <script src="app/filters/pricefilter.js"></script>
 
 </body>
 </html>
