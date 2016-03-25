@@ -185,7 +185,7 @@
 
 <!-- Initial product listings -->
     <div class="container">
-      <div class="col-sm-4" ng-repeat="product in products | priceFilter:priceInfo | orderBy: '-id'">
+      <div class="col-sm-4" ng-repeat="product in products | priceFilter:priceInfo ">
         <div class="thumbnail">
           <img ng-src="images/{{product.image}}.jpg" alt="">
           <div class="caption">
