@@ -18,14 +18,14 @@
         </div>
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Shop</a></li>
+         <!--  <li><a href="#">Shop</a></li> -->
           <li><a href="#">Gallery</a></li> 
           <li><a href="#">About</a></li> 
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <!-- <ul class="nav navbar-nav navbar-right">
           <li><a href="#"><span class="glyphicon glyphicon-user"></span> Register</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
+        </ul> -->
       </div>
     </nav>
   </header>
@@ -175,19 +175,123 @@
                   ng-click="addProduct(newListing)"
                   ng-show="addListing">Add
                 </button>
-            <pre>{{newListing | json}}</pre>
-
-<!-- end for listing form for adding  -->
+           <!--  <pre>{{newListing | json}}</pre> -->
       </div>
-    
-  </div>
-</div>   
+<!-- end for listing form for adding  -->
+
+<!-- beginning of edit form -->
+      <div class="listing-form" ng-if="editListing">
+        
+        <h3>Edit Listing</h3>
+
+        <div class="row listing-form-row">
+          <div class="col-sm-4">
+            <div class="input-group">
+              <span class="input-group-addon">Name</span>
+              <input type="text" placeholder="Give your listing a glorious name" class="form-control" ng-model="existingListing.name">
+            </div>
+          </div>
+        
+
+          <div class="col-sm-4">
+            <div class="input-group">
+              <span class="input-group-addon">Price</span>
+              <input type="text" placeholder="Enter the price" class="form-control" ng-model="existingListing.price">
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="input-group">
+              <span class="input-group-addon">Type</span>
+              <select type="select" name="furnitureType"
+              id="furnitureType" class="form-control" ng-model="existingListing.type">
+                <option value="Desk">Desk</option>
+                <option value="Vanity">Vanity</option>
+                <option value="Chair">Chair</option>
+                <option value="Table">Table</option>
+                <option value="Stool">Stool</option>
+                <option value="Rocking chair">Rocking chair</option>
+                <option value="Dresser"></option>
+                <option value="Other">Other</option>
+                </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row listing-form-row">
+              <div class="col-sm-4">
+                <div class="input-group">
+                  <span class="input-group-addon">Description</span>
+                  <textarea 
+                    type="text" 
+                    placeholder="Enter the description" 
+                    class="form-control" 
+                    ng-model="existingListing.description">
+                  </textarea>
+                </div>
+              </div>
+
+              <div class="col-sm-8">
+
+                <div class="col-sm-4">
+                  <div class="input-group">
+                    <span class="input-group-addon">Dims</span>
+                    <input 
+                      type="text" 
+                      placeholder="Dimensions" 
+                      class="form-control" 
+                      ng-model="existingListing.details.dimensions">
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <div class="input-group">
+                    <span class="input-group-addon">City</span>
+                    <input 
+                      type="text" 
+                      placeholder="Area" 
+                      class="form-control" 
+                      ng-model="existingListing.details.area">
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <div class="input-group">
+                    <span class="input-group-addon">Contact</span>
+                    <input 
+                      type="text" 
+                      placeholder="Contact" 
+                      class="form-control" 
+                      ng-model="existingListing.details.contact">
+                  </div>
+                </div>
+
+              </div>
+
+              <button 
+                class="btn btn-primary listing-button"
+                ng-click="saveProductEdit()" 
+                ng-show="editListing">Save
+              </button>
+
+              <button 
+                class="btn btn-danger listing-button" 
+                ng-click="deleteProduct(existingListing)" 
+                ng-show="editListing">Delete
+              </button>
+
+              </div>
+
+      </div>
+    </div>
+  
 
 <!-- Initial product listings -->
     <div class="container">
-      <div class="col-sm-4" ng-repeat="product in products | priceFilter:priceInfo ">
+      <div class="row cardscontainer">
+      <div class="col-sm-4 productcard" ng-repeat="product in products | priceFilter:priceInfo ">
         <div class="thumbnail">
-          <img ng-src="images/{{product.image}}.jpg" alt="">
+          <img ng-src="images/{{product.image}}.jpg" class="imagecontainer" alt="">
           <div class="caption">
             <div ng-hide="showDetails === true">
               <h3><i class="glyphicon glyphicon-tag"></i> {{product.price | currency}}</h3>
@@ -203,6 +307,13 @@
                     <i class="glyphicon glyphicon-info-sign"></i>
                     Details
             </button>
+
+            <button class="btn btn-xs btn-primary"
+                    ng-show="showDetails"
+                    ng-click="editProduct(product)">
+                    Edit
+            </button>
+
             <!-- close details -->
             <button class="btn btn-xs btn-danger"
                     ng-show="showDetails === true"
@@ -221,6 +332,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
 <!-- view tab to be used when contents are moved into individual partials -->

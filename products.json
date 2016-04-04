@@ -1,5 +1,6 @@
 [
-			{
+	 
+			 {
 				"id": "01",
 				"name": "The Mark",
 				"type": "Vanity",
@@ -44,16 +45,16 @@
 			{
 				"id": "04",
 				"name": "Decision Maker",
-				"type": "Rocking Chair",
-				"price": 888,
-				"description": "Just like the one your grandfather had.",
+				"type": "Chair",
+				"price": 375,
+				"description": "Reclaimed pallet wood.",
 				"details": {
 					"dimensions": "50 x 24 x 40",
-					"material": "Oak",
+					"material": "Pine",
 					"contact": "m@m.com",
 					"area": "Donelson"
 				},
-				"image":"default-01"
+				"image":"filler-5"
 			},
 			{
 				"id": "05",
@@ -67,14 +68,14 @@
 					"contact": "m@m.com",
 					"area": "Nashville"
 				},
-				"image":"default-01"
+				"image":"filler-4"
 			},
 			{
 				"id": "06",
 				"name": "The Steve",
 				"type": "Throne",
 				"price": 15000,
-				"description": "Throne that teaches other chairs how to be chairs.",
+				"description": "Chair that teaches other chairs how to be chairs.",
 				"details": {
 					"dimensions": "48 x 40 x 78",
 					"material": "Cedar",
@@ -83,4 +84,5 @@
 				},
 				"image":"filler-6"
 			}
-		]
+		
+]
